@@ -1,11 +1,11 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Multi-armed Bandit Algorithm | CM233's Blog</title><script src="https://cdn.bootcss.com/valine/1.4.4/Valine.min.js"></script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>多臂老虎机算法 | CM233's Blog</title><script src="https://cdn.bootcss.com/valine/1.4.4/Valine.min.js"></script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.1.2/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
  font-family: BenderLight;
  src: local('Bender'), url("/font/BenderLight.ttf");
 }
 @font-face {
  font-family: 'JetBrains Mono';
  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}</style><meta name="generator" content="Hexo 5.2.0"></head><body><header><nav><a href="/">Home</a><a href="/archives/">Archives</a><a href="/Blogroll/">Blogroll</a></nav></header><main style="flex-direction: row-reverse"><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2020-10-19T05:32:40.000Z" id="date"> 2020-10-19</time></span><br><span>updated:<time datetime="2020-10-19T08:22:14.712Z" id="updated"> 2020-10-19</time></span></div><h1>Multi-armed Bandit Algorithm</h1><hr></div><div id="post-content"><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>![bandit-project-1.png](/Multi-armed Bandit Algorithm/bandit-project_1.png)<br>![bandit-project-2.png](/Multi-armed Bandit Algorithm/bandit-project_2.png)<br>![bandit-project-3.png](/Multi-armed Bandit Algorithm/bandit-project_3.png)</p>
+}</style><meta name="generator" content="Hexo 5.2.0"></head><body><header><nav><a href="/">Home</a><a href="/archives/">Archives</a><a href="/Blogroll/">Blogroll</a></nav></header><main style="flex-direction: row-reverse"><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2020-10-19T05:32:40.000Z" id="date"> 2020-10-19</time></span><br><span>updated:<time datetime="2020-10-19T08:27:28.890Z" id="updated"> 2020-10-19</time></span></div><h1>多臂老虎机算法</h1><hr></div><div id="post-content"><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img src="/Bandit/bandit-project_1.png" alt="bandit-project-1.png"><br><img src="/Bandit/bandit-project_2.png" alt="bandit-project-2.png"><br><img src="/Bandit/bandit-project_3.png" alt="bandit-project-3.png"></p>
 <h2 id="解题过程"><a href="#解题过程" class="headerlink" title="解题过程"></a>解题过程</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> random<br><span class="hljs-keyword">import</span> math<br><span class="hljs-keyword">import</span> matplotlib.pyplot <span class="hljs-keyword">as</span> plt<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">import</span> copy<br><span class="hljs-keyword">from</span> scipy.stats <span class="hljs-keyword">import</span> beta<br><span class="hljs-comment">#参数</span><br>theta1=<span class="hljs-number">0.4</span><br>theta2=<span class="hljs-number">0.6</span><br>theta3=<span class="hljs-number">0.8</span><br>N=<span class="hljs-number">10000</span><br><br></code></pre></td></tr></table></figure>
 
 <h3 id="Simulation-1"><a href="#Simulation-1" class="headerlink" title="Simulation 1:"></a>Simulation 1:</h3><p>理论最大期望为0.8*10000=8000,即一开始就知道3号摇臂出奖概率最大，只摇3号机。</p>
@@ -33,8 +33,8 @@ regret值为：
 215.72999999999865
 预测Theta值：
 [0.40166641 0.59905741 0.79976371]</code></pre>
-<p>![output_7_1.png](/Multi-armed Bandit Algorithm/output_7_1.png)</p>
-<p>![output_7_2.png](/Multi-armed Bandit Algorithm/output_7_2.png)</p>
+<p><img src="/Bandit/output_7_1.png" alt="output_7_1.png"></p>
+<p><img src="/Bandit/output_7_2.png" alt="output_7_2.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">e_greedy(<span class="hljs-number">0.5</span>)<br></code></pre></td></tr></table></figure>
 
 <pre><code>e参数取：0.5时，t=1~10000的收益：
@@ -44,8 +44,8 @@ regret值为：
 1007.3099999999995
 预测Theta值：
 [0.39821173 0.59814583 0.80040327]</code></pre>
-<p>![output_8_1.png](/Multi-armed Bandit Algorithm/output_8_1.png)</p>
-<p>![output_8_2.png](/Multi-armed Bandit Algorithm/output_8_2.png)</p>
+<p><img src="/Bandit/output_8_1.png" alt="output_8_1.png"></p>
+<p><img src="/Bandit/output_8_2.png" alt="output_8_2.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">e_greedy(<span class="hljs-number">0.9</span>)<br></code></pre></td></tr></table></figure>
 
 <pre><code>e参数取：0.9时，t=1~10000的收益：
@@ -55,8 +55,8 @@ regret值为：
 1790.0400000000027
 预测Theta值：
 [0.40182244 0.60207399 0.80021209]</code></pre>
-<p>![output_9_1.png](/Multi-armed Bandit Algorithm/output_9_1.png)</p>
-<p>![output_9_2.png](/Multi-armed Bandit Algorithm/output_9_2.png)</p>
+<p><img src="/Bandit/output_9_1.png" alt="output_9_1.png"></p>
+<p><img src="/Bandit/output_9_2.png" alt="output_9_2.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">UCB(<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
 
 <pre><code>c参数取：1时，t=1~10000的收益：
@@ -66,8 +66,8 @@ regret值为：
 105.89000000000215
 预测Theta值
 [0.38664761 0.59712598 0.79940634]</code></pre>
-<p>![output_10_1.png](/Multi-armed Bandit Algorithm/output_10_1.png)</p>
-<p>![output_10_2.png](/Multi-armed Bandit Algorithm/output_10_2.png)</p>
+<p><img src="/Bandit/output_10_1.png" alt="output_10_1.png"></p>
+<p><img src="/Bandit/output_10_2.png" alt="output_10_2.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">UCB(<span class="hljs-number">5</span>)  <br></code></pre></td></tr></table></figure>
 
 <pre><code>c参数取：5时，t=1~10000的收益：
@@ -77,8 +77,8 @@ regret值为：
 866.4299999999994
 预测Theta值
 [0.39966456 0.59921349 0.79886625]</code></pre>
-<p>![output_11_1.png](/Multi-armed Bandit Algorithm/output_11_1.png)</p>
-<p>![output_11_2.png](/Multi-armed Bandit Algorithm/output_11_2.png)</p>
+<p><img src="/Bandit/output_11_1.png" alt="output_11_1.png"></p>
+<p><img src="/Bandit/output_11_2.png" alt="output_11_2.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">UCB(<span class="hljs-number">10</span>)  <br></code></pre></td></tr></table></figure>
 
 <pre><code>c参数取：10时，t=1~10000的收益：
@@ -88,8 +88,8 @@ regret值为：
 1323.170000000001
 预测Theta值
 [0.39852165 0.60163882 0.80046364]</code></pre>
-<p>![output_12_1.png](/Multi-armed Bandit Algorithm/output_12_1.png)</p>
-<p>![output_12_2.png](/Multi-armed Bandit Algorithm/output_12_2.png)</p>
+<p><img src="/Bandit/output_12_1.png" alt="output_12_1.png"></p>
+<p><img src="/Bandit/output_12_2.png" alt="output_12_2.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]<br>b = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]<br>Tompson(a,b)<br></code></pre></td></tr></table></figure>
 
 <pre><code>alpha,beta分别为
@@ -101,9 +101,9 @@ regret值为：
 17.880000000001928
 预测Theta值
 [0.37343004 0.53172827 0.79931412]</code></pre>
-<p>![output_13_1.png](/Multi-armed Bandit Algorithm/output_13_1.png)</p>
-<p>![output_13_2.png](/Multi-armed Bandit Algorithm/output_13_2.png)</p>
-<p>![output_13_3.png](/Multi-armed Bandit Algorithm/output_13_3.png)</p>
+<p><img src="/Bandit/output_13_1.png" alt="output_13_1.png"></p>
+<p><img src="/Bandit/output_13_2.png" alt="output_13_2.png"></p>
+<p><img src="/Bandit/output_13_3.png" alt="output_13_3.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">a = [<span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>]<br>b = [<span class="hljs-number">0</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">2</span>]<br>Tompson(a,b)<br></code></pre></td></tr></table></figure>
 
 <pre><code>alpha,beta分别为
@@ -115,9 +115,9 @@ regret值为：
 -0.7999999999992724
 预测Theta值
 [0.37417063 0.45870278 0.80089121]</code></pre>
-<p>![output_14_1.png](/Multi-armed Bandit Algorithm/output_14_1.png)</p>
-<p>![output_14_2.png](/Multi-armed Bandit Algorithm/output_14_2.png)</p>
-<p>![output_14_3.png](/Multi-armed Bandit Algorithm/output_14_3.png)</p>
+<p><img src="/Bandit/output_14_1.png" alt="output_14_1.png"></p>
+<p><img src="/Bandit/output_14_2.png" alt="output_14_2.png"></p>
+<p><img src="/Bandit/output_14_3.png" alt="output_14_3.png"></p>
 <h3 id="Simulation中2-3-4-5的解答已经整合在上述输出结果中"><a href="#Simulation中2-3-4-5的解答已经整合在上述输出结果中" class="headerlink" title="Simulation中2 3 4 5的解答已经整合在上述输出结果中"></a>Simulation中2 3 4 5的解答已经整合在上述输出结果中</h3><h3 id="Simulation-6"><a href="#Simulation-6" class="headerlink" title="Simulation 6:"></a>Simulation 6:</h3><p>regret值已经在前面的输出中计算过了<br>从结果来看，在三种算法中，Tompson Sampling算法是最好的算法，regret最少，并且最快确定最优选项。</p>
 <p>ε-greedy算法中的ε，主要是用于控制摇臂（arm）的选择策略，ε越小，算法越倾向于利用之前的结果，预测出高概率吐钱的摇臂并选择，是一种守成（或者说是贪心）的策略，ε越大，算法随机性越大，越倾向于去随机选择一个摇臂，是一种探索的策略。从上面的3种不同的参数设计就能看出来，参数对结果的影响很大。</p>
 <p>UCB算法中的C，主要是作为系数，影响和置信度相关的一个单项式，置信度对于很少被选择的摇臂来说，随着timeslot增长会不断增大，提高其被选中的概率，而另一方面C越大，置信度提升也越大，被选择次数少的摇臂就更容易被选中，探索性也就越大。</p>
@@ -131,7 +131,7 @@ regret值为：
 <h3 id="心得与体会："><a href="#心得与体会：" class="headerlink" title="心得与体会："></a>心得与体会：</h3><p>通过学习该问题，我觉得我对强化学习的问题形式有了最基本的认识（即不提供数据，通过reward反馈来指导模型建立和优化），也体会到了数学，特别是概率论在这方面的重要性。我仍然认为自己的代码有可以优化的地方，但是对于算法本身我已经有比较清楚的理解。我觉得题目中所体现的权衡问题是非常值得深入研究的，并且选用的算法展现出了强化学习的优越性，我觉得强化学习在科研和实际应用中都很有前景，也非常有兴趣在强化学习领域进行进一步的学习。虽然我现在的基础比较薄弱，但我会想办法快速提升自己的水平，我觉得多研究这一类经典问题，可以快速提升自己的数理基础、编程水平和对于强化学习这个方向的认识，一定会有不菲的收获。希望能得到老师的认可和进一步指导。</p>
 <p>（以上内容仅有部分理论基础方面的参考，代码和问题回答全部为独立原创。）</p>
 <p>陈铭</p>
-<div id="paginator"></div></div><div id="post-footer"><hr><a href="/2020/10/19/Bandit/">多臂老虎机算法 Next →</a><hr></div><div id="bottom-btn"><a id="to-index" href="#post-index" title="index">≡</a><a id="to-top" href="#post-title" title="to top">∧</a></div><div id="Valine"></div><script>new Valine({
+<div id="paginator"></div></div><div id="post-footer"><hr><a href="/2020/10/19/Multi-armed%20Bandit%20Algorithm/">← Prev Multi-armed Bandit Algorithm</a><span style="color: #fe2"> | </span><a href="/2020/10/18/%E8%81%8A%E8%81%8A%E4%BF%9D%E7%A0%94/">聊聊保研 Next →</a><hr></div><div id="bottom-btn"><a id="to-index" href="#post-index" title="index">≡</a><a id="to-top" href="#post-title" title="to top">∧</a></div><div id="Valine"></div><script>new Valine({
  el: '#Valine'
  , appId: ''
  , appKey: ''
