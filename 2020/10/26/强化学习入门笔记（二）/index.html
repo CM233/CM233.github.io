@@ -5,7 +5,7 @@
 @font-face {
  font-family: 'JetBrains Mono';
  src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}</style><meta name="generator" content="Hexo 5.2.0"></head><body><header><nav><a href="/">Home</a><a href="/archives/">Archives</a><a href="/Blogroll/">Blogroll</a></nav></header><main style="flex-direction: row-reverse"><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2020-10-26T03:12:20.000Z" id="date"> 2020-10-26</time></span><br><span>updated:<time datetime="2020-10-31T08:24:40.298Z" id="updated"> 2020-10-31</time></span></div><h1>强化学习入门笔记（二）</h1><hr></div><div id="post-content"><p>2020年10月26日 星期一 11时16分46秒 CST<br>学习内容：<br>周博磊强化学习纲要</p>
+}</style><meta name="generator" content="Hexo 5.2.0"></head><body><header><nav><a href="/">Home</a><a href="/archives/">Archives</a><a href="/Blogroll/">Blogroll</a></nav></header><main style="flex-direction: row-reverse"><article><div id="post-bg"><div id="post-title"><div id="post-info"><span>date:<time datetime="2020-10-26T03:12:20.000Z" id="date"> 2020-10-26</time></span><br><span>updated:<time datetime="2020-10-31T09:07:08.689Z" id="updated"> 2020-10-31</time></span></div><h1>强化学习入门笔记（二）</h1><hr></div><div id="post-content"><p>2020年10月26日 星期一 11时16分46秒 CST<br>学习内容：<br>周博磊强化学习纲要</p>
 <hr>
 <h2 id="第一讲"><a href="#第一讲" class="headerlink" title="第一讲"></a>第一讲</h2><p>英文部分基本都为视频中原文  </p>
 <h3 id="Difference-between-RL-and-Supervised-Learning"><a href="#Difference-between-RL-and-Supervised-Learning" class="headerlink" title="Difference between RL and Supervised Learning"></a>Difference between RL and Supervised Learning</h3><ol>
@@ -44,7 +44,7 @@
 <p>policy evaluation的形式是，给定一个MDP，和对应的策略，可以得到马尔可夫链上value function的过程。MDP可以有最佳的价值函数（最佳指的是找到一个决策π使得价值函数上每个值为最大，可能有多个最佳决策）<br>寻找最优策略可以通过对Q函数进行极大化来解决。(argmax Q*(s,a)) </p>
 <h4 id="Decision-Making-in-MDP"><a href="#Decision-Making-in-MDP" class="headerlink" title="Decision Making in MDP"></a>Decision Making in MDP</h4><img src="/2020/10/26/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/MDP_DecisionMaking.jpg" class>   
 <p>DP是解MDP的predict和control问题的有效方式<br>寻找最优策略的具体方法：policy iteration &amp; value iteration(都是DP)</p>
-<h4 id="policy-iteration"><a href="#policy-iteration" class="headerlink" title="policy iteration"></a>policy iteration</h4><p>step:Evaluate policy π （计算当前π的价值函数） -&gt; Improve the policy</p>
+<h4 id="policy-iteration"><a href="#policy-iteration" class="headerlink" title="policy iteration"></a>policy iteration</h4><p>step:Evaluate policy π （计算当前π的价值函数v,然后推算q） -&gt; Improve the policy(对q函数做贪心，即argmax)<br>反复以上过程，迭代至收敛。</p>
 <h4 id="value-iteration"><a href="#value-iteration" class="headerlink" title="value iteration"></a>value iteration</h4><p>（待补充）</p>
 <div id="paginator"></div></div><div id="post-footer"><hr><a href="/2020/10/20/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">强化学习入门笔记（一） Next →</a><hr></div><div id="bottom-btn"><a id="to-index" href="#post-index" title="index">≡</a><a id="to-top" href="#post-title" title="to top">∧</a></div><div id="Valine"></div><script>new Valine({
  el: '#Valine'
